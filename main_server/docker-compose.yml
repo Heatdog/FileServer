@@ -1,0 +1,8 @@
+
+
+services:
+  server:
+    image: server:local
+    container_name: ps-server
+    ports:
+      - "8080:8080"

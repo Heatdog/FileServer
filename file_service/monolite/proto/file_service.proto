@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package file_service_monolite;
+
+// protoc --go_out=. --go_opt=paths=source_relative file_service.proto
+option go_package = "github.com/Heatdog/FileServer/file_service/monolite/proto";
+
+service FileService{
+    rpc GetFile(GetFileRequest) returns (stream GetFileResponse) {}
+    rpc SetFile(stream SetFileRequest) returns (SetFileResponse) {}
+}
+
+message GetFileRequest {
+    string uuid = 1;
+}
+
+message GetFileResponse {
+    string uuid = 1;
+    bytes chunk = 2;
+}
+
+message SetFileRequest {
+    string uuid = 1;
+    bytes chunk = 2;
+}
+
+message SetFileResponse {
+    string uuid = 1;
+    uint64 size = 2;
+}
